@@ -18,6 +18,7 @@
 			background: #f5f5f5;
 			font-family: "Noto Sans", sans-serif;
 			color: #3d3d3d;
+			font-size: 100%;
 		}
 
 		section {
@@ -98,7 +99,7 @@
 		// create a Leaflet map in our division container with id of 'map'
 		var map = L.map('map', options);
 
-		// request some basemap tiles and add to the map 
+		// request some basemap tiles and add to the map
 		var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
 			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
 			subdomains: 'abcd',
