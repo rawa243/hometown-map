@@ -21,7 +21,7 @@
 		}
 
 		section {
-			width: 960px;
+			width: 80%;
 			margin: 20px auto;
 		}
 
@@ -62,29 +62,32 @@
 			margin: 10px 0
 		}
 		#map {
-			width: 960px;
+			width: 100%;
 			height: 540px;
 			margin: 10px auto;
 			border: 2px solid #d3d3d3;
+		}
+		.two-column {
+		  float:left;
+		  width:49%;
+		  margin-right:1%;
+		}
+		.below-columns {
+		  display: inline-block;
+		  width: 100%;
 		}
 	</style>
 </head>
 
 <body>
 
-	<h1>Hometown Map</h1>
-
-	<section> <! add map title section >
-    <h1>Grand Rapids, MI</h1>
-  </section>
-
-	<section> <! put map into section >
+<section>
+	<h1>Hometown Map - Grand Rapids, MI</h1>
 	<div id='map'></div>
-	</section>
-
-	<section>
-		<h2>About this map</h2>
-		<p>Grand Rapids is home to <a href="http://www.artprize.org">ArtPrize</a>, huge art festival that takes place each fall for 3 weeks. During this time artists come from around the globe to install their art around the city and the public votes to see who has the best piece. Several world records have come out of ArtPrize including <a href="http://www.guinnessworldrecords.com/world-records/79707-largest-bean-bag">largest bean bag</a> and <a href="http://www.guinnessworldrecords.com/world-records/longest-painting-by-an-individual">longest painting</a> by an individual.</p>
+	<h2>About this map</h2>
+	<div class="two-column">Grand Rapids is home to <a href="http://www.artprize.org">ArtPrize</a>, huge art festival that takes place each fall for 3 weeks. During this time artists come from around the globe to install their art around the city and the public votes to see who has the best piece.</div>
+	<div class="two-column">Several world records have come out of ArtPrize including <a href="http://www.guinnessworldrecords.com/world-records/79707-largest-bean-bag">largest bean bag</a> and <a href="http://www.guinnessworldrecords.com/world-records/longest-painting-by-an-individual">longest painting</a> by an individual.</div>
+	<div class="below-columns"></div>
 
 		<ul>
 			<li>See my projects on GitHub: <a href="https://github.com/newmapsplus">New Maps Plus</a></li>
@@ -128,6 +131,11 @@
 			.bindTooltip(message)
 			.addTo(map)
 			.openTooltip();
+
+	// --- Image of City ----
+			clickme_id.addEventListener('click', function() {
+	  		document.getElementById('photos_id').innerHTML = '<img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Grdowntown.jpg">';
+			});
 
 	</script>
 
