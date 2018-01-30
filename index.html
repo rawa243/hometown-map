@@ -76,6 +76,9 @@
 		  display: inline-block;
 		  width: 100%;
 		}
+		.GR-Skyline {
+			width: 100%;
+		}
 	</style>
 </head>
 
@@ -132,8 +135,8 @@
 			.openTooltip();
 
 	// --- Image of City ----
-			clickme_id.addEventListener('click', function() {
-	  		document.getElementById('photos_id').innerHTML = '<img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Grdowntown.jpg">';
+			map.addEventListener('click', function() {
+	  		document.getElementById('map').innerHTML = '<img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Grdowntown.jpg" class="GR-Skyline">';
 			});
 
 	</script>
