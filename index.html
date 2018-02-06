@@ -79,6 +79,12 @@
 		.GR-Skyline {
 			width: 100%;
 		}
+		.John-Ball-Zoo {
+			width: 100%
+		}
+		.GR-Museum {
+			width: 100%
+		}
 	</style>
 </head>
 
@@ -108,7 +114,7 @@
 		// map options
 		var options = {
 			center: [42.965357, -85.672074], // lat/lon values
-			zoom: 12
+			zoom: 14
 		}
 
 		// create a Leaflet map in our division container with id of 'map'
@@ -162,10 +168,12 @@
 
 	// creating a string of the tooltip content
 	var location1Tooltip = "<b>" + locations[0] + "</b>" +
-			"<br><b># of Exhibits</b>: " + exhibits[0];
+			"<br><b># of Exhibits</b>: " + exhibits[0] + "</b><br>" +
+					'<img src="https://upload.wikimedia.org/wikipedia/commons/1/14/John_Ball_Zoo_entrance.jpg" class="John-Ball-Zoo">';
 
 	var location2Tooltip = "<b>" + locations[1] + "</b>" +
-			"<br><b># of Exhibits</b>: " + exhibits[1];
+			"<br><b># of Exhibits</b>: " + exhibits[1] + "</b><br>" +
+					'<img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Grand_Rapids_Public_Museum.jpg" class="GR-Museum">';
 
 	// create the Leaflet marker using the coordinates
 
