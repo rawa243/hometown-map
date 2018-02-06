@@ -143,6 +143,43 @@
 			document.getElementById('image-container').innerHTML = '<img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Grdowntown.jpg" class="GR-Skyline">';
 		});
 
+	// --- Add Marker Locations ---
+	// variables referencing data values
+	var location1Name = "John Ball Zoo",
+			location1Coords = [42.962331, -85.702798],
+			location1Exhibits = 11;
+
+	var location2Name = "Grand Rapids Public Museum",
+			location2Coords = [42.965559, -85.676788],
+			location2Exhibits = 12;
+
+	// arrays of data for markers
+	var locations = [location1Name, location2Name],
+			coords = [location1Coords, location2Coords],
+			exhibits = [location1Exhibits, location2Exhibits];
+
+	// ADDING MARKERS TO MAP
+
+	// creating a string of the tooltip content
+	var location1Tooltip = "<b>" + locations[0] + "</b>" +
+			"<br><b># of Exhibits</b>: " + exhibits[0];
+
+	var location2Tooltip = "<b>" + locations[1] + "</b>" +
+			"<br><b># of Exhibits</b>: " + exhibits[1];
+
+	// create the Leaflet marker using the coordinates
+
+	// ADDING FIRST MARKER TO MAP
+	L.marker(coords[0])
+			.addTo(map) // add it to the map
+			.bindTooltip(location1Tooltip);  // bind the tooltip
+
+	// ADDING SECOND MARKER TO MAP
+	L.marker(coords[1])
+			.addTo(map) // add it to the map
+			.bindTooltip(location2Tooltip);  // bind the tooltip
+
+
 	</script>
 
 </body>
