@@ -87,6 +87,9 @@
 		.clear {
 			clear: both;
 		}
+		#image-container {
+			display: none; 			/* don't display container on page load */
+		}
 		.GR-Skyline {
 			width: 100%;
 		}
@@ -120,7 +123,9 @@
 	<p class="two-column">Several world records have come out of ArtPrize including <a href="http://www.guinnessworldrecords.com/world-records/79707-largest-bean-bag">largest bean bag</a> and <a href="http://www.guinnessworldrecords.com/world-records/longest-painting-by-an-individual">longest painting</a> by an individual. <button class="fr mt18" id="image-button">Image of Grand Rapids</button></p>
 	<div class="clear">	</div>
 		
-		<div id='image-container'></div>
+		<div id='image-container'>
+				<img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Grdowntown.jpg" class="GR-Skyline">
+		</div>
 </section>
 <footer>
 	<section>
@@ -143,14 +148,6 @@
 		// create a Leaflet map in our division container with id of 'map'
 		var map = L.map('map', options);
 
-		// request some basemap tiles and add to the map
-	/*	var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
-			subdomains: 'abcd',
-			maxZoom: 19
-		}).addTo(map);
-	*/
-
 	// ---- New basemap! ----
 		var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
 			maxZoom: 19,
@@ -165,12 +162,12 @@
 			.bindTooltip(message)
 			.addTo(map)
 			.openTooltip();
-
-	// --- Image of City ----
-		var button = document.getElementById('image-button');
-		button.addEventListener('click', function() {
-			document.getElementById('image-container').innerHTML = '<img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Grdowntown.jpg" class="GR-Skyline">';
+		
+		// use JQuery to select the image-button and toggle slide the image
+		$('#image-button').click(function() {
+			$('#image-container').slideToggle();
 		});
+		
 
 	// --- Add Marker Locations ---
 	// variables referencing data values
