@@ -24,7 +24,11 @@
 			width: 80%;
 			margin: 20px auto;
 		}
-
+		header {
+			background: #3d3d3d;
+			color: white;
+			padding: 12px 0;
+		}
 		h1 {
 			width: 960px;
 			margin: 20px auto;
@@ -55,7 +59,8 @@
 		}
 
 		ul {
-			padding-left: 20px;
+			padding-left: 0;
+			list-style-type: none;
 		}
 
 		li {
@@ -73,8 +78,17 @@
 		  margin-right:1%;
 			margin-bottom: 18px;
 		}
+		.fr {
+			float: right;
+		}
+		.mt18 {
+			margin-top: 18px;
+		}
 		.clear {
 			clear: both;
+		}
+		#image-container {
+			display: none; 			/* don't display container on page load */
 		}
 		.GR-Skyline {
 			width: 100%;
@@ -85,28 +99,42 @@
 		.GR-Museum {
 			width: 100%
 		}
+		footer {
+			background: #3d3d3d;
+			color: white;
+			padding: 24px 0;
+		}
+		footer a {
+			color: rgb(182, 159, 211);
+		}
 	</style>
 </head>
 
 <body>
-
+<header>
+	<section>
+		<h1>Hometown Map - Grand Rapids, MI</h1>
+	</section>
+	</header>
 <section>
-	<h1>Hometown Map - Grand Rapids, MI</h1>
 	<div id='map'></div>
 	<h2>About this map</h2>
-	<div class="two-column">Grand Rapids is home to <a href="http://www.artprize.org">ArtPrize</a>, huge art festival that takes place each fall for 3 weeks. During this time artists come from around the globe to install their art around the city and the public votes to see who has the best piece.</div>
-	<div class="two-column">Several world records have come out of ArtPrize including <a href="http://www.guinnessworldrecords.com/world-records/79707-largest-bean-bag">largest bean bag</a> and <a href="http://www.guinnessworldrecords.com/world-records/longest-painting-by-an-individual">longest painting</a> by an individual.</div>
-	<div class="clear">
-		<button id="image-button">Image of Grand Rapids</button>
-		<div id='image-container'></div>
-	</div>
-
+	<p class="two-column">Grand Rapids is home to <a href="http://www.artprize.org">ArtPrize</a>, huge art festival that takes place each fall for 3 weeks. During this time artists come from around the globe to install their art around the city and the public votes to see who has the best piece.</p>
+	<p class="two-column">Several world records have come out of ArtPrize including <a href="http://www.guinnessworldrecords.com/world-records/79707-largest-bean-bag">largest bean bag</a> and <a href="http://www.guinnessworldrecords.com/world-records/longest-painting-by-an-individual">longest painting</a> by an individual. <button class="fr mt18" id="image-button">Image of Grand Rapids</button></p>
+	<div class="clear">	</div>
+		
+		<div id='image-container'>
+				<img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Grdowntown.jpg" class="GR-Skyline">
+		</div>
+</section>
+<footer>
+	<section>
 		<ul>
 			<li>See my projects on GitHub: <a href="https://github.com/rawa243">Rebekah Watkins</a></li>
 			<li>Follow me on LinkedIn: <a href="https://www.linkedin.com/in/rebwatkins/">@rebwatkins</a></li>
 		</ul>
 	</section>
-
+</footer>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 	<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet-src.js"></script>
 	<script>
@@ -119,14 +147,6 @@
 
 		// create a Leaflet map in our division container with id of 'map'
 		var map = L.map('map', options);
-
-		// request some basemap tiles and add to the map
-	/*	var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
-			subdomains: 'abcd',
-			maxZoom: 19
-		}).addTo(map);
-	*/
 
 	// ---- New basemap! ----
 		var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
@@ -142,12 +162,12 @@
 			.bindTooltip(message)
 			.addTo(map)
 			.openTooltip();
-
-	// --- Image of City ----
-		var button = document.getElementById('image-button');
-		button.addEventListener('click', function() {
-			document.getElementById('image-container').innerHTML = '<img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Grdowntown.jpg" class="GR-Skyline">';
+		
+		// use JQuery to select the image-button and toggle slide the image
+		$('#image-button').click(function() {
+			$('#image-container').slideToggle();
 		});
+		
 
 	// --- Add Marker Locations ---
 	// variables referencing data values
