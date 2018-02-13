@@ -93,12 +93,10 @@
 		.GR-Skyline {
 			width: 100%;
 		}
-		.John-Ball-Zoo {
+		.Pop-Up-Image {
 			width: 100%
 		}
-		.GR-Museum {
-			width: 100%
-		}
+
 		footer {
 			background: #3d3d3d;
 			color: white;
@@ -122,7 +120,7 @@
 	<p class="two-column">Grand Rapids is home to <a href="http://www.artprize.org">ArtPrize</a>, huge art festival that takes place each fall for 3 weeks. During this time artists come from around the globe to install their art around the city and the public votes to see who has the best piece.</p>
 	<p class="two-column">Several world records have come out of ArtPrize including <a href="http://www.guinnessworldrecords.com/world-records/79707-largest-bean-bag">largest bean bag</a> and <a href="http://www.guinnessworldrecords.com/world-records/longest-painting-by-an-individual">longest painting</a> by an individual. <button class="fr mt18" id="image-button">Image of Grand Rapids</button></p>
 	<div class="clear">	</div>
-		
+
 		<div id='image-container'>
 				<img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Grdowntown.jpg" class="GR-Skyline">
 		</div>
@@ -154,6 +152,7 @@
 			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>'
 		}).addTo(map);
 
+		/* //Too Busy for this pin
 		// write a custom message for the Leaflet tooltip
 		var message = 'Grand Rapids is awesome!';
 
@@ -161,17 +160,48 @@
 		L.marker(map.getCenter())
 			.bindTooltip(message)
 			.addTo(map)
-			.openTooltip();
-		
+			.openTooltip(); */
+
 		// use JQuery to select the image-button and toggle slide the image
 		$('#image-button').click(function() {
 			$('#image-container').slideToggle();
 		});
-		
+
 
 	// --- Add Marker Locations ---
 	// variables referencing data values
-	var location1Name = "John Ball Zoo",
+	var nameLocation = ["John Ball Zoo","Grand Rapids Public Museum","Gerald R. Ford Museum", "Grand Rapids Children's Museum", "Grand Rapids Art Museum"];
+	var coordinateLocation = [
+		[42.962331, -85.702798],
+		[42.965559, -85.676788],
+		[42.968472, -85.677343],
+		[42.963600, -85.667180],
+		[42.965085, -85.671007]
+	];
+	var exhibitsLocation = [11,12,2,14,2];
+	var detailsLocation = ["https://upload.wikimedia.org/wikipedia/commons/1/14/John_Ball_Zoo_entrance.jpg","https://upload.wikimedia.org/wikipedia/commons/7/77/Grand_Rapids_Public_Museum.jpg","https://upload.wikimedia.org/wikipedia/commons/8/8d/Ford_ford_museum.jpg","https://c2.staticflickr.com/4/3467/3962452789_f26a324a8e_b.jpg","https://c2.staticflickr.com/6/5705/22301556443_d03521876d_b.jpg"];
+	var museumLocation = [false, true, true, true, true];
+
+
+
+	// For loop creating tooltips
+	for (var i = 0; i < nameLocation.length; i++) {
+		if (museumLocation[i] == true){
+			var locationPopup = "<b>" + nameLocation[i] + "</b>" +
+					"<br>Is a museum and has " + exhibitsLocation[i] + "<br> exhibits." +
+					'<br><img src=\"' + detailsLocation[i] + '\" class="Pop-Up-Image">';
+		} else {
+				var locationPopup = "<b>" + nameLocation[i] + "</b>" +
+						"<br>Is not a museum and has " + exhibitsLocation[i] + "<br> exhibits." +
+						'<br><img src=\"' + detailsLocation[i] + '\" class="Pop-Up-Image">';
+		}
+		L.marker(coordinateLocation[i])
+				.addTo(map) // add it to the map
+				.bindTooltip(locationPopup);  // bind the tooltip
+	}
+
+	// Old tooltip code
+	/*var location1Name = "John Ball Zoo",
 			location1Coords = [42.962331, -85.702798],
 			location1Exhibits = 11;
 
@@ -205,7 +235,7 @@
 	// ADDING SECOND MARKER TO MAP
 	L.marker(coords[1])
 			.addTo(map) // add it to the map
-			.bindTooltip(location2Tooltip);  // bind the tooltip
+			.bindTooltip(location2Tooltip);  // bind the tooltip */
 
 
 	</script>
