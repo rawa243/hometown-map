@@ -17,28 +17,33 @@
 			background: #f5f5f5;
 			font-family: "Noto Sans", sans-serif;
 			color: #3d3d3d;
-			font-size: 100%; /* add font size */
+			font-size: 100%;
+			/* add font size */
 		}
 
 		section {
 			width: 80%;
 			margin: 20px auto;
 		}
+
 		header {
 			background: #3d3d3d;
 			color: white;
 			padding: 12px 0;
 		}
+
 		h1 {
 			width: 960px;
 			margin: 20px auto;
-			font-size: 2em; /* add font size */
+			font-size: 2em;
+			/* add font size */
 			font-family: 'Montserrat', sans-serif;
 			letter-spacing: .04em;
 		}
 
 		h2 {
-			font-size: 1.5em; /* add font size */
+			font-size: 1.5em;
+			/* add font size */
 			font-family: 'Montserrat', sans-serif;
 			letter-spacing: .04em;
 		}
@@ -66,33 +71,42 @@
 		li {
 			margin: 10px 0
 		}
+
 		#map {
 			width: 100%;
 			height: 540px;
 			margin: 10px auto;
 			border: 2px solid #d3d3d3;
 		}
+
 		.two-column {
-		  float:left;
-		  width:49%;
-		  margin-right:1%;
+			float: left;
+			width: 49%;
+			margin-right: 1%;
 			margin-bottom: 18px;
 		}
+
 		.fr {
 			float: right;
 		}
+
 		.mt18 {
 			margin-top: 18px;
 		}
+
 		.clear {
 			clear: both;
 		}
+
 		#image-container {
-			display: none; 			/* don't display container on page load */
+			display: none;
+			/* don't display container on page load */
 		}
+
 		.GR-Skyline {
 			width: 100%;
 		}
+
 		.Pop-Up-Image {
 			width: 100%
 		}
@@ -102,43 +116,63 @@
 			color: white;
 			padding: 24px 0;
 		}
+
 		footer a {
 			color: rgb(182, 159, 211);
+		}
+
+		footer ul ul {
+			margin-left: 24px;
 		}
 	</style>
 </head>
 
 <body>
-<header>
-	<section>
-		<h1>Hometown Map - Grand Rapids, MI</h1>
-	</section>
+	<header>
+		<section>
+			<h1>Hometown Map - Grand Rapids, MI</h1>
+		</section>
 	</header>
-<section>
-	<div id='map'></div>
-	<h2>About this map</h2>
-	<p class="two-column">Grand Rapids is home to <a href="http://www.artprize.org">ArtPrize</a>, huge art festival that takes place each fall for 3 weeks. During this time artists come from around the globe to install their art around the city and the public votes to see who has the best piece.</p>
-	<p class="two-column">Several world records have come out of ArtPrize including <a href="http://www.guinnessworldrecords.com/world-records/79707-largest-bean-bag">largest bean bag</a> and <a href="http://www.guinnessworldrecords.com/world-records/longest-painting-by-an-individual">longest painting</a> by an individual. <button class="fr mt18" id="image-button">Image of Grand Rapids</button></p>
-	<div class="clear">	</div>
+	<section>
+		<div id='map'></div>
+		<h2>About this map</h2>
+		<p class="two-column">Grand Rapids is home to
+			<a href="http://www.artprize.org">ArtPrize</a>, huge art festival that takes place each fall for 3 weeks. During this time artists come from around the
+			globe to install their art around the city and the public votes to see who has the best piece.</p>
+		<p class="two-column">Several world records have come out of ArtPrize including
+			<a href="http://www.guinnessworldrecords.com/world-records/79707-largest-bean-bag">largest bean bag</a> and
+			<a href="http://www.guinnessworldrecords.com/world-records/longest-painting-by-an-individual">longest painting</a> by an individual.
+			<button class="fr mt18" id="image-button">Image of Grand Rapids</button>
+		</p>
+		<div class="clear"> </div>
 
 		<div id='image-container'>
-				<img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Grdowntown.jpg" class="GR-Skyline">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Grdowntown.jpg" class="GR-Skyline">
 		</div>
-</section>
-<footer>
-	<section>
-		<ul>
-			<li>See my projects on GitHub: <a href="https://github.com/rawa243">@rawa243</a></li>
-			<li>Follow me on: </li>
-			<li> &nbsp &nbsp LinkedIn: <a href="https://www.linkedin.com/in/rebwatkins/">@rebwatkins</a></li>
-			<li> &nbsp &nbsp Medium: <a href="https://medium.com/@rebekah_87090/">Rebekah Watkins</a></li>
-		</ul>
 	</section>
-</footer>
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<footer>
+		<section>
+			<ul>
+				<li>See my projects on GitHub:
+					<a href="https://github.com/rawa243">@rawa243</a>
+				</li>
+				<li>Follow me on:
+					<ul>
+						<li>LinkedIn:
+							<a href="https://www.linkedin.com/in/rebwatkins/">@rebwatkins</a>
+						</li>
+						<li>Medium:
+							<a href="https://medium.com/@rebekah_87090/">Rebekah Watkins</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</section>
+	</footer>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	  crossorigin="anonymous"></script>
 	<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet-src.js"></script>
 	<script>
-
 		// map options
 		var options = {
 			center: [42.965357, -85.672074], // lat/lon values
@@ -148,98 +182,56 @@
 		// create a Leaflet map in our division container with id of 'map'
 		var map = L.map('map', options);
 
-	// ---- New basemap! ----
+		// ---- New basemap! ----
 		var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
 			maxZoom: 19,
 			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>'
 		}).addTo(map);
 
-		/* //Too Busy for this pin
-		// write a custom message for the Leaflet tooltip
-		var message = 'Grand Rapids is awesome!';
-
-		// add a marker to the center of the map and open the tooltip
-		L.marker(map.getCenter())
-			.bindTooltip(message)
-			.addTo(map)
-			.openTooltip(); */
-
 		// use JQuery to select the image-button and toggle slide the image
-		$('#image-button').click(function() {
+		$('#image-button').click(function () {
 			$('#image-container').slideToggle();
 		});
 
 
-	// --- Add Marker Locations ---
-	// variables referencing data values
-	var nameLocation = ["John Ball Zoo","Grand Rapids Public Museum","Gerald R. Ford Museum", "Grand Rapids Children's Museum", "Grand Rapids Art Museum"];
-	var coordinateLocation = [
-		[42.962331, -85.702798],
-		[42.965559, -85.676788],
-		[42.968472, -85.677343],
-		[42.963600, -85.667180],
-		[42.965085, -85.671007]
-	];
-	var exhibitsLocation = [11,12,2,14,2];
-	var detailsLocation = ["https://upload.wikimedia.org/wikipedia/commons/1/14/John_Ball_Zoo_entrance.jpg","https://upload.wikimedia.org/wikipedia/commons/7/77/Grand_Rapids_Public_Museum.jpg","https://upload.wikimedia.org/wikipedia/commons/8/8d/Ford_ford_museum.jpg","https://c2.staticflickr.com/4/3467/3962452789_f26a324a8e_b.jpg","https://c2.staticflickr.com/6/5705/22301556443_d03521876d_b.jpg"];
-	var museumLocation = [false, true, true, true, true];
+		// --- Add Marker Locations ---
+		// variables referencing data values
+		var nameLocation = ["John Ball Zoo", "Grand Rapids Public Museum", "Gerald R. Ford Museum",
+			"Grand Rapids Children's Museum", "Grand Rapids Art Museum"
+		];
+		var coordinateLocation = [
+			[42.962331, -85.702798],
+			[42.965559, -85.676788],
+			[42.968472, -85.677343],
+			[42.963600, -85.667180],
+			[42.965085, -85.671007]
+		];
+		var exhibitsLocation = [11, 12, 2, 14, 2];
+		var detailsLocation = ["https://upload.wikimedia.org/wikipedia/commons/1/14/John_Ball_Zoo_entrance.jpg",
+			"https://upload.wikimedia.org/wikipedia/commons/7/77/Grand_Rapids_Public_Museum.jpg",
+			"https://upload.wikimedia.org/wikipedia/commons/8/8d/Ford_ford_museum.jpg",
+			"https://c2.staticflickr.com/4/3467/3962452789_f26a324a8e_b.jpg",
+			"https://c2.staticflickr.com/6/5705/22301556443_d03521876d_b.jpg"
+		];
+		var museumLocation = [false, true, true, true, true];
 
 
 
-	// For loop creating tooltips
-	for (var i = 0; i < nameLocation.length; i++) {
-		if (museumLocation[i] == true){
-			var locationPopup = "<b>" + nameLocation[i] + "</b>" +
+		// For loop creating tooltips
+		for (var i = 0; i < nameLocation.length; i++) {
+			if (museumLocation[i] == true) {
+				var locationPopup = "<b>" + nameLocation[i] + "</b>" +
 					"<br>Is a museum and has " + exhibitsLocation[i] + "<br> exhibits." +
 					'<br><img src=\"' + detailsLocation[i] + '\" class="Pop-Up-Image">';
-		} else {
+			} else {
 				var locationPopup = "<b>" + nameLocation[i] + "</b>" +
-						"<br>Is not a museum and has " + exhibitsLocation[i] + "<br> exhibits." +
-						'<br><img src=\"' + detailsLocation[i] + '\" class="Pop-Up-Image">';
-		}
-		L.marker(coordinateLocation[i])
+					"<br>Is not a museum and has " + exhibitsLocation[i] + "<br> exhibits." +
+					'<br><img src=\"' + detailsLocation[i] + '\" class="Pop-Up-Image">';
+			}
+			L.marker(coordinateLocation[i])
 				.addTo(map) // add it to the map
-				.bindTooltip(locationPopup);  // bind the tooltip
-	}
-
-	// Old tooltip code
-	/*var location1Name = "John Ball Zoo",
-			location1Coords = [42.962331, -85.702798],
-			location1Exhibits = 11;
-
-	var location2Name = "Grand Rapids Public Museum",
-			location2Coords = [42.965559, -85.676788],
-			location2Exhibits = 12;
-
-	// arrays of data for markers
-	var locations = [location1Name, location2Name],
-			coords = [location1Coords, location2Coords],
-			exhibits = [location1Exhibits, location2Exhibits];
-
-	// ADDING MARKERS TO MAP
-
-	// creating a string of the tooltip content
-	var location1Tooltip = "<b>" + locations[0] + "</b>" +
-			"<br><b># of Exhibits</b>: " + exhibits[0] + "</b><br>" +
-					'<img src="https://upload.wikimedia.org/wikipedia/commons/1/14/John_Ball_Zoo_entrance.jpg" class="John-Ball-Zoo">';
-
-	var location2Tooltip = "<b>" + locations[1] + "</b>" +
-			"<br><b># of Exhibits</b>: " + exhibits[1] + "</b><br>" +
-					'<img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Grand_Rapids_Public_Museum.jpg" class="GR-Museum">';
-
-	// create the Leaflet marker using the coordinates
-
-	// ADDING FIRST MARKER TO MAP
-	L.marker(coords[0])
-			.addTo(map) // add it to the map
-			.bindTooltip(location1Tooltip);  // bind the tooltip
-
-	// ADDING SECOND MARKER TO MAP
-	L.marker(coords[1])
-			.addTo(map) // add it to the map
-			.bindTooltip(location2Tooltip);  // bind the tooltip */
-
-
+				.bindTooltip(locationPopup); // bind the tooltip
+		}
 	</script>
 
 </body>
