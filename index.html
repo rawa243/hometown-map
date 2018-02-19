@@ -131,7 +131,7 @@
 			<li>See my projects on GitHub: <a href="https://github.com/rawa243">@rawa243</a></li>
 			<li>Follow me on: </li>
 			<li> &nbsp &nbsp LinkedIn: <a href="https://www.linkedin.com/in/rebwatkins/">@rebwatkins</a></li>
-			<li> &nbsp &nbsp Medium: <a href="https://medium.com/@rebekah_87090/">Rebekah Watkins</a></li>
+			<li> &nbsp &nbsp Medium: <a href="https://medium.com/@rebekah_watkins/">@rebekah_watkins</a></li>
 		</ul>
 	</section>
 </footer>
@@ -188,16 +188,21 @@
 
 	// For loop creating tooltips
 	for (var i = 0; i < nameLocation.length; i++) {
-		if (museumLocation[i] == true){
+
+			// Create tooltip string message
 			var locationPopup = "<b>" + nameLocation[i] + "</b>" +
-					"<br>Is a museum and has " + exhibitsLocation[i] + "<br> exhibits." +
-					'<br><img src=\"' + detailsLocation[i] + '\" class="Pop-Up-Image">';
-		} else {
-				var locationPopup = "<b>" + nameLocation[i] + "</b>" +
-						"<br>Is not a museum and has " + exhibitsLocation[i] + "<br> exhibits." +
-						'<br><img src=\"' + detailsLocation[i] + '\" class="Pop-Up-Image">';
-		}
-		L.marker(coordinateLocation[i])
+					"<br>Number of exhibits: " + exhibitsLocation[i];
+
+			//if it's a museum
+			if (museumLocation[i] == true) {
+				locationPopup += "<br>Is a museum.";
+			}
+
+			// append image to end of popup
+				locationPopup += '<br><img src=\"' + detailsLocation[i] + '\" class="Pop-Up-Image">';
+
+			// create marker
+			L.marker(coordinateLocation[i])
 				.addTo(map) // add it to the map
 				.bindTooltip(locationPopup);  // bind the tooltip
 	}
