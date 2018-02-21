@@ -174,7 +174,7 @@
 			$('#image-container').slideToggle();
 		});
 
-  // --- Add Button for Music Location ----
+  // --- Add Button for Special Music Location ----
 	var nameMusic = ["Van Andel Arena","DeVos Performance Hall","Grand Rapids Civic Theatre"];
 	var coordinateMusic= [
 		[42.962428, -85.671581],
@@ -191,7 +191,7 @@
 		for (var i = 0; i < nameMusic.length; i++) {
 			var musicPopup = "<b>" + nameMusic[i] + "</b>" +
 			'<br><img src=\"' + detailsMusic[i] + '\" class="Pop-Up-Image">';
-			var iconMusic = createMusicIcon(typeMusic[i]); // Function call
+			var iconMusic = createIcon(typeMusic[i],musicIconURL); // Function call
 
 		// create marker
 		L.marker(coordinateMusic[i], {
@@ -202,33 +202,7 @@
 		}
 	});
 
-	function createMusicIcon(typeOfLocation) {  //create fuction for music icons
-		var iconURL = "", // declare the iconURL
-		iconSize = 30; // create default size
-
-		if (typeOfLocation == "Stadium") {
-			iconURL = musicIconURL[0];
-		} else if (typeOfLocation == "Concert Hall") {
-			iconURL = musicIconURL[1];
-			iconSize = 25;
-		} else if (typeOfLocation == "Theatre") {
-			iconURL = musicIconURL[2];
-			iconSize = 25;
-		};
-
-		// Create a Leaflet icon object
-		var result = L.icon({
-			iconUrl: iconURL,
-			iconSize: iconSize,
-			popupAnchor: [0, -15] // Center of your icon is [0,0]
-		});
-
-		// Function returns a properly formatted Leaf icon object to place on your map
-		return result;
-
-	};
-
-	// --- Add Marker Locations ---
+	// --- Add Permanent Marker Locations ---
 	// variables referencing data values
 	var nameLocation = ["John Ball Zoo","Grand Rapids Public Museum","Gerald R. Ford Museum", "Grand Rapids Children's Museum", "Grand Rapids Art Museum"];
 	var coordinateLocation = [
@@ -262,7 +236,7 @@
 		locationPopup += '<br><img src=\"' + detailsLocation[i] + '\" class="Pop-Up-Image">';
 
 		// Build Leaflet icon by calling a function to determine type of location
-		  var iconLocation = createIcon(typeLocation[i]); // Function call
+		  var iconLocation = createIcon(typeLocation[i],typeIconURL); // Function call
 
 		// create marker
 		L.marker(coordinateLocation[i], {
@@ -274,14 +248,23 @@
 
 	// Function to determine type of location and return appropriate Leaflet icon object
 
-	function createIcon(typeOfLocation) {
+	function createIcon(typeOfLocation, url) {
 		var iconURL = "", // declare the iconURL
 		iconSize = 30; // create default size
 
 		if (typeOfLocation == "Zoo") {
-			iconURL = typeIconURL[0];
+			iconURL = url[0];
 		} else if (typeOfLocation == "Museum") {
-			iconURL = typeIconURL[1];
+			iconURL = url[1];
+			iconSize = 25;
+		} else if (typeOfLocation == "Stadium") {
+			iconURL = musicIconURL[0];
+			iconSize = 25;
+		} else if (typeOfLocation == "Concert Hall") {
+			iconURL = musicIconURL[1];
+			iconSize = 25;
+		} else if (typeOfLocation == "Theatre") {
+			iconURL = musicIconURL[2];
 			iconSize = 25;
 		};
 
