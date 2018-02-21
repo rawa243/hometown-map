@@ -105,6 +105,10 @@
 		footer a {
 			color: rgb(182, 159, 211);
 		}
+		button {
+			font-size: 1.2em;
+			/*            margin: 10px auto;*/
+		}
 	</style>
 </head>
 
@@ -116,6 +120,7 @@
 	</header>
 <section>
 	<div id='map'></div>
+	<button id='map-music'>Favorite Musical Locations</button>
 	<h2>About this map</h2>
 	<p class="two-column">Grand Rapids is home to <a href="http://www.artprize.org">ArtPrize</a>, huge art festival that takes place each fall for 3 weeks. During this time artists come from around the globe to install their art around the city and the public votes to see who has the best piece.</p>
 	<p class="two-column">Several world records have come out of ArtPrize including <a href="http://www.guinnessworldrecords.com/world-records/79707-largest-bean-bag">largest bean bag</a> and <a href="http://www.guinnessworldrecords.com/world-records/longest-painting-by-an-individual">longest painting</a> by an individual. <button class="fr mt18" id="image-button">Image of Grand Rapids</button></p>
@@ -169,6 +174,59 @@
 			$('#image-container').slideToggle();
 		});
 
+  // --- Add Button for Music Location ----
+	var nameMusic = ["Van Andel Arena","DeVos Performance Hall","Grand Rapids Civic Theatre"];
+	var coordinateMusic= [
+		[42.962428, -85.671581],
+		[42.968144, -85.672868],
+		[42.964289, -85.667804]
+	];
+	var detailsMusic = ["https://upload.wikimedia.org/wikipedia/commons/c/c0/Vanandel.jpg","https://devosperformancehall.com/sites/default/files/styles/performance-basic-page-primary/public/primary-image/DPH_Interior1_0.jpg?itok=TsrkPSyw","http://womenslifestyle.com/wp-content/uploads/2013/07/GrandRapidsCivicTheatreExterior1.jpg"];
+	var typeMusic = ["Stadium", "Concert Hall", "Theatre"];
+	var musicIconURL = ["svgs/stadium-11.svg", "svgs/music-11.svg", "svgs/theatre-11.svg"];
+
+	var button = document.getElementById("map-music"); //add button
+
+	button.addEventListener("click", function() {  //add event listener for click
+		for (var i = 0; i < nameMusic.length; i++) {
+			var musicPopup = "<b>" + nameMusic[i] + "</b>" +
+			'<br><img src=\"' + detailsMusic[i] + '\" class="Pop-Up-Image">';
+			var iconMusic = createMusicIcon(typeMusic[i]); // Function call
+
+		// create marker
+		L.marker(coordinateMusic[i], {
+            icon: iconMusic // Insert returned function value
+        })
+		.addTo(map) // add it to the map
+		.bindTooltip(musicPopup);
+		}
+	});
+
+	function createMusicIcon(typeOfLocation) {  //create fuction for music icons
+		var iconURL = "", // declare the iconURL
+		iconSize = 30; // create default size
+
+		if (typeOfLocation == "Stadium") {
+			iconURL = musicIconURL[0];
+		} else if (typeOfLocation == "Concert Hall") {
+			iconURL = musicIconURL[1];
+			iconSize = 25;
+		} else if (typeOfLocation == "Theatre") {
+			iconURL = musicIconURL[2];
+			iconSize = 25;
+		};
+
+		// Create a Leaflet icon object
+		var result = L.icon({
+			iconUrl: iconURL,
+			iconSize: iconSize,
+			popupAnchor: [0, -15] // Center of your icon is [0,0]
+		});
+
+		// Function returns a properly formatted Leaf icon object to place on your map
+		return result;
+
+	};
 
 	// --- Add Marker Locations ---
 	// variables referencing data values
