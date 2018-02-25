@@ -97,6 +97,23 @@
 			width: 100%
 		}
 
+    .icon:hover {
+      opacity: .8;
+    }
+
+    .leaflet-popup-content h3 {
+      font-family: "Lora", serif;
+      font-size: 1.3em;
+      margin-bottom: 6px;
+    }
+    .leaflet-popup-content p {
+      margin: 3px 0 6px;
+      font-size: 1.1em;
+    }
+    .leaflet-popup-content a {
+      font-weight: normal;
+    }
+
 		footer {
 			background: #3d3d3d;
 			color: white;
@@ -144,30 +161,17 @@
 	<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet-src.js"></script>
 	<script>
 
-		// map options
-		var options = {
+	// create a Leaflet map in our division container with id of 'map's
+		var map = L.map('map', {
 			center: [42.965357, -85.672074], // lat/lon values
 			zoom: 14
-		}
+		});
 
-		// create a Leaflet map in our division container with id of 'map'
-		var map = L.map('map', options);
-
-	// ---- New basemap! ----
+	// ---- Basemap! ----
 		var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
 			maxZoom: 19,
 			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>'
 		}).addTo(map);
-
-		/* //Too Busy for this pin
-		// write a custom message for the Leaflet tooltip
-		var message = 'Grand Rapids is awesome!';
-
-		// add a marker to the center of the map and open the tooltip
-		L.marker(map.getCenter())
-			.bindTooltip(message)
-			.addTo(map)
-			.openTooltip(); */
 
 		// use JQuery to select the image-button and toggle slide the image
 		$('#image-button').click(function() {
@@ -186,19 +190,29 @@
 	var musicIconURL = ["svgs/stadium-11.svg", "svgs/music-11.svg", "svgs/theatre-11.svg"];
 
 	var button = document.getElementById("map-music"); //add button
+	var locationIndicator = false;
 
 	button.addEventListener("click", function() {  //add event listener for click
-		for (var i = 0; i < nameMusic.length; i++) {
-			var musicPopup = "<b>" + nameMusic[i] + "</b>" +
-			'<br><img src=\"' + detailsMusic[i] + '\" class="Pop-Up-Image">';
-			var iconMusic = createIcon(typeMusic[i],musicIconURL); // Function call
+		if (!locationIndicator) {
+			markers = []
+			locationIndicator = true;
+			for (var i = 0; i < nameMusic.length; i++) {
+				var musicPopup = "<b>" + nameMusic[i] + "</b>" +
+				'<br><img src=\"' + detailsMusic[i] + '\" class="Pop-Up-Image">';
+				var iconMusic = createIcon(typeMusic[i],musicIconURL); // Function call
 
-		// create marker
-		L.marker(coordinateMusic[i], {
-            icon: iconMusic // Insert returned function value
-        })
-		.addTo(map) // add it to the map
-		.bindTooltip(musicPopup);
+			// create marker
+			marker = new L.marker(coordinateMusic[i], {
+				icon: iconMusic // Insert returned function value
+			})
+			markers.push(marker)
+			marker.addTo(map).bindTooltip(musicPopup);
+			}
+		} else {
+			locationIndicator = false;
+			markers.forEach(function(marker) {
+				map.removeLayer(marker)
+			})
 		}
 	});
 
@@ -244,7 +258,7 @@
         })
 		.addTo(map) // add it to the map
 		.bindTooltip(locationPopup);  // bind the tooltip
-	}
+	};
 
 	// Function to determine type of location and return appropriate Leaflet icon object
 
