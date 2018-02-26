@@ -224,7 +224,7 @@
 						popup += '<br><img src=\"' + props.imageURL + '\" class="Pop-Up-Image">';
 					}
 				}
-			
+
 					var iconMusic = createIcon(props.type,props.icon); // Function call
 
 				// create marker
@@ -243,48 +243,90 @@
 	});
 
 	// --- Add Permanent Marker Locations ---
-	// variables referencing data values
-	var nameLocation = ["John Ball Zoo","Grand Rapids Public Museum","Gerald R. Ford Museum", "Grand Rapids Children's Museum", "Grand Rapids Art Museum"];
-	var coordinateLocation = [
-		[42.962331, -85.702798],
-		[42.965559, -85.676788],
-		[42.968472, -85.677343],
-		[42.963600, -85.667180],
-		[42.965085, -85.671007]
+	// objects referencing data values
+	var myLocations = [
+		{
+			name: "John Ball Zoo",
+			properties: {
+				coordinates: [42.962331, -85.702798],
+				exhibits: 11,
+				museum: false,
+				type: "Zoo",
+				imageURL: "https://upload.wikimedia.org/wikipedia/commons/1/14/John_Ball_Zoo_entrance.jpg",
+				icon: "svgs/zoo-11.svg",
+			}
+		},
+		{
+			name: "Grand Rapids Public Museum",
+			properties: {
+				coordinates: [42.965559, -85.676788],
+				exhibits: 12,
+				museum: true,
+				type: "Museum",
+				imageURL: "https://upload.wikimedia.org/wikipedia/commons/7/77/Grand_Rapids_Public_Museum.jpg",
+				icon: "svgs/museum-11.svg",
+			}
+		},
+		{
+			name: "Gerald R. Ford Museum",
+			properties: {
+				coordinates: [42.968472, -85.677343],
+				exhibits: 2,
+				museum: true,
+				type: "Museum",
+				imageURL: "https://upload.wikimedia.org/wikipedia/commons/8/8d/Ford_ford_museum.jpg",
+				icon: "svgs/museum-11.svg",
+			}
+		},
+		{
+			name: "Grand Rapids Children's Museum",
+			properties: {
+				coordinates: [42.963600, -85.667180],
+				exhibits: 14,
+				museum: true,
+				type: "Museum",
+				imageURL: "https://c2.staticflickr.com/4/3467/3962452789_f26a324a8e_b.jpg",
+				icon: "svgs/museum-11.svg",
+			}
+		},
+		{
+			name: "Grand Rapids Art Museum",
+			properties: {
+				coordinates: [42.965085, -85.671007],
+				exhibits: 2,
+				museum: true,
+				type: "Museum",
+				imageURL: "https://c2.staticflickr.com/6/5705/22301556443_d03521876d_b.jpg",
+				icon: "svgs/museum-11.svg",
+			}
+		}
 	];
-	var exhibitsLocation = [11,12,2,14,2];
-	var detailsLocation = ["https://upload.wikimedia.org/wikipedia/commons/1/14/John_Ball_Zoo_entrance.jpg","https://upload.wikimedia.org/wikipedia/commons/7/77/Grand_Rapids_Public_Museum.jpg","https://upload.wikimedia.org/wikipedia/commons/8/8d/Ford_ford_museum.jpg","https://c2.staticflickr.com/4/3467/3962452789_f26a324a8e_b.jpg","https://c2.staticflickr.com/6/5705/22301556443_d03521876d_b.jpg"];
-	var museumLocation = [false, true, true, true, true];
-	// Group your locations into categories for symbology
-	var typeLocation = ["Zoo", "Museum", "Museum", "Museum", "Museum"];
-	// Give URL for custom icon
-	var typeIconURL = ["svgs/zoo-11.svg", "svgs/museum-11.svg", "svgs/museum-11.svg", "svgs/museum-11.svg", "svgs/museum-11.svg"];
 
-	// For loop creating tooltips
-	for (var i = 0; i < nameLocation.length; i++) {
-
+	// For loop creating markers and tooltips
+	for (var i = 0; i < myLocations.length; i++) {
+		var props = myLocations[i].properties;
 		// Create tooltip string message
-		var locationPopup = "<b>" + nameLocation[i] + "</b>" +
-		"<br>Number of exhibits: " + exhibitsLocation[i];
-
-		//if it's a museum
-		if (museumLocation[i] == true) {
-			locationPopup += "<br>Is a museum.";
+		var popup = "<h3>" + myLocations[i].name + "</h3>";
+		for (var key in props) {
+			if (props[key] == props.exhibits) {
+				popup += "<br>Number of exhibits: " + props.exhibits;
+				if (props.museum) {
+					popup += "<br>Is a museum.";
+				}
+			} else if (props[key] == props.imageURL) {
+				popup += '<br><img src=\"' + props.imageURL + '\" class="Pop-Up-Image">';
+			}
 		}
 
-		// append image to end of popup
-		locationPopup += '<br><img src=\"' + detailsLocation[i] + '\" class="Pop-Up-Image">';
-
-		// Build Leaflet icon by calling a function to determine type of location
-		  var iconLocation = createIcon(typeLocation[i],typeIconURL); // Function call
+			var iconLocation = createIcon(props.type,props.icon); // Function call
 
 		// create marker
-		L.marker(coordinateLocation[i], {
-            icon: iconLocation // Insert returned function value
-        })
-		.addTo(map) // add it to the map
-		.bindTooltip(locationPopup);  // bind the tooltip
-	};
+		L.marker(props.coordinates, {
+			icon: iconLocation // Insert returned function value
+		})
+			.addTo(map) // add it to the map
+			.bindTooltip(popup);  // bind the tooltip
+	}
 
 	// Function to determine type of location and return appropriate Leaflet icon object
 
@@ -293,9 +335,9 @@
 		iconSize = 30; // create default size
 
 		if (typeOfLocation == "Zoo") {
-			iconURL = url[0];
+			iconURL = url;
 		} else if (typeOfLocation == "Museum") {
-			iconURL = url[1];
+			iconURL = url;
 			iconSize = 25;
 		} else if (typeOfLocation == "Stadium") {
 			iconURL = url;
