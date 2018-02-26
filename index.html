@@ -221,7 +221,7 @@
 				var popup = "<h3>" + myMusicLocations[i].name + "</h3>";
 				for (var key in props) {
 					if (props[key] == props.imageURL) {
-						popup += '<br><img src=\"' + props.imageURL + '\" class="Pop-Up-Image">';
+						popup += '<img src=\"' + props.imageURL + '\" class="Pop-Up-Image">';
 					}
 				}
 
@@ -309,12 +309,12 @@
 		var popup = "<h3>" + myLocations[i].name + "</h3>";
 		for (var key in props) {
 			if (props[key] == props.exhibits) {
-				popup += "<br>Number of exhibits: " + props.exhibits;
+				popup += "<p>" + "Number of exhibits: " + props.exhibits + "</p>";
 				if (props.museum) {
-					popup += "<br>Is a museum.";
+					popup += "<p>" + "Is a museum." + "</p>";
 				}
 			} else if (props[key] == props.imageURL) {
-				popup += '<br><img src=\"' + props.imageURL + '\" class="Pop-Up-Image">';
+				popup += '<img src=\"' + props.imageURL + '\" class="Pop-Up-Image">';
 			}
 		}
 
