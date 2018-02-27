@@ -22,28 +22,33 @@
 			background: #f5f5f5;
 			font-family: "Noto Sans", sans-serif;
 			color: #3d3d3d;
-			font-size: 100%; /* add font size */
+			font-size: 100%;
+			/* add font size */
 		}
 
 		section {
 			width: 80%;
 			margin: 20px auto;
 		}
+
 		header {
 			background: #3d3d3d;
 			color: white;
 			padding: 12px 0;
 		}
+
 		h1 {
 			width: 960px;
 			margin: 20px auto;
-			font-size: 2em; /* add font size */
+			font-size: 2em;
+			/* add font size */
 			font-family: 'Montserrat', sans-serif;
 			letter-spacing: .04em;
 		}
 
 		h2 {
-			font-size: 1.5em; /* add font size */
+			font-size: 1.5em;
+			/* add font size */
 			font-family: 'Montserrat', sans-serif;
 			letter-spacing: .04em;
 		}
@@ -71,33 +76,42 @@
 		li {
 			margin: 10px 0
 		}
+
 		#map {
 			width: 100%;
 			height: 540px;
 			margin: 10px auto;
 			border: 2px solid #d3d3d3;
 		}
+
 		.two-column {
-		  float:left;
-		  width:49%;
-		  margin-right:1%;
+		  float: left;
+		  width: 49%;
+		  margin-right: 1%;
 			margin-bottom: 18px;
 		}
+
 		.fr {
 			float: right;
 		}
+
 		.mt18 {
 			margin-top: 18px;
 		}
+
 		.clear {
 			clear: both;
 		}
+
 		#image-container {
-			display: none; 			/* don't display container on page load */
+			display: none;
+			/* don't display container on page load */
 		}
+
 		.GR-Skyline {
 			width: 100%;
 		}
+
 		.Pop-Up-Image {
 			width: 100%
 		}
@@ -111,10 +125,12 @@
       font-size: 1.3em;
       margin-bottom: 6px;
     }
+
     .leaflet-popup-content p {
       margin: 3px 0 6px;
       font-size: 1.1em;
     }
+
     .leaflet-popup-content a {
       font-weight: normal;
     }
@@ -124,73 +140,77 @@
 			color: white;
 			padding: 24px 0;
 		}
+
 		footer a {
 			color: rgb(182, 159, 211);
 		}
+
 		footer ul ul {
 			margin-left: 24px;
 		}
+
 		button {
 			font-size: 1.2em;
 			/*            margin: 10px auto;*/
 		}
+
 	</style>
 </head>
 
 <body>
-<header>
+			<header>
+							<section>
+											<h1>Hometown Map - Grand Rapids, MI</h1>
+							</section>
+			</header>
 	<section>
-		<h1>Hometown Map - Grand Rapids, MI</h1>
-	</section>
-	</header>
-	<section>
-		<div id='map'></div>
-		<button id='map-music'>Favorite Musical Locations</button>
-		<h2>About this map</h2>
-		<p class="two-column">Grand Rapids is home to
-			<a href="http://www.artprize.org">ArtPrize</a>, huge art festival that takes place each fall for 3 weeks. During this time artists come from around the
-			globe to install their art around the city and the public votes to see who has the best piece.</p>
-		<p class="two-column">Several world records have come out of ArtPrize including
-			<a href="http://www.guinnessworldrecords.com/world-records/79707-largest-bean-bag">largest bean bag</a> and
-			<a href="http://www.guinnessworldrecords.com/world-records/longest-painting-by-an-individual">longest painting</a> by an individual.
-			<button class="fr mt18" id="image-button">Image of Grand Rapids</button>
-		</p>
-		<div class="clear"> </div>
-
-		<div id='image-container'>
-				<img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Grdowntown.jpg" class="GR-Skyline">
-		</div>
+					<div id='map'></div>
+					<button id='map-music'>Favorite Musical Locations</button>
+					<h2>About this map</h2>
+					<p class="two-column">Grand Rapids is home to
+						<a href="http://www.artprize.org">ArtPrize</a>, huge art festival that takes place each fall for 3 weeks. During this time artists come from around the
+						globe to install their art around the city and the public votes to see who has the best piece.</p>
+					<p class="two-column">Several world records have come out of ArtPrize including
+						<a href="http://www.guinnessworldrecords.com/world-records/79707-largest-bean-bag">largest bean bag</a> and
+						<a href="http://www.guinnessworldrecords.com/world-records/longest-painting-by-an-individual">longest painting</a> by an individual.
+						<button class="fr mt18" id="image-button">Image of Grand Rapids</button>
+					</p>
+					<div class="clear"> </div>
+					<div id='image-container'>
+					<img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Grdowntown.jpg" class="GR-Skyline">
+					</div>
 	</section>
 	<footer>
-		<section>
-			<ul>
-				<li>See my projects on GitHub: <a href="https://github.com/rawa243">@rawa243</a></li>
-				<li>Follow me on: </li>
-				<li> &nbsp &nbsp LinkedIn: <a href="https://www.linkedin.com/in/rebwatkins/">@rebwatkins</a></li>
-				<li> &nbsp &nbsp Medium: <a href="https://medium.com/@rebekah_watkins/">@rebekah_watkins</a></li>
-			</ul>
-	</section>
-</footer>
+					<section>
+									<ul>
+											<li>See my projects on GitHub: <a href="https://github.com/rawa243">@rawa243</a></li>
+											<li>Follow me on: </li>
+											<li> &nbsp &nbsp LinkedIn: <a href="https://www.linkedin.com/in/rebwatkins/">@rebwatkins</a></li>
+											<li> &nbsp &nbsp Medium: <a href="https://medium.com/@rebekah_watkins/">@rebekah_watkins</a></li>
+									</ul>
+					</section>
+	</footer>
+
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 	<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet-src.js"></script>
 	<script>
 
 	// create a Leaflet map in our division container with id of 'map's
-		var map = L.map('map', {
-			center: [42.965357, -85.672074], // lat/lon values
-			zoom: 14
-		});
+	var map = L.map('map', {
+		center: [42.965357, -85.672074], // lat/lon values
+		zoom: 14
+	});
 
 	// ---- Basemap! ----
-		var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-			maxZoom: 19,
-			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>'
-		}).addTo(map);
+	var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+		maxZoom: 19,
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>'
+	}).addTo(map);
 
-		// use JQuery to select the image-button and toggle slide the image
-		$('#image-button').click(function() {
-			$('#image-container').slideToggle();
-		});
+	// use JQuery to select the image-button and toggle slide the image
+	$('#image-button').click(function() {
+		$('#image-container').slideToggle();
+	});
 
   // --- Add Button for Special Music Location ----
 	var button = document.getElementById("map-music"); //add button
@@ -250,7 +270,7 @@
 			}
 		}
 
-			var iconLocation = createIcon(props.type,props.icon); // Function call
+		var iconLocation = createIcon(props.type,props.icon); // Function call
 
 		// create marker
 		L.marker(props.coordinates, {
@@ -287,17 +307,17 @@
 			iconSize = 25;
 		};
 
-		// Create a Leaflet icon object
-		var result = L.icon({
-			iconUrl: iconURL,
-			iconSize: iconSize,
-			popupAnchor: [0, -15] // Center of your icon is [0,0]
-		});
+	// Create a Leaflet icon object
+	var result = L.icon({
+		iconUrl: iconURL,
+		iconSize: iconSize,
+		popupAnchor: [0, -15] // Center of your icon is [0,0]
+	});
 
-		// Function returns a properly formatted Leaf icon object to place on your map
-		return result;
+	// Function returns a properly formatted Leaf icon object to place on your map
+	return result;
 
-	};
+};
 
 	</script>
 
