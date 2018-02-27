@@ -191,9 +191,10 @@
 		if (!locationIndicator) {
 			markers = []
 			locationIndicator = true;
-			for (var i = 0; i < myMusicLocations.length; i++) {
-				var props = myMusicLocations[i].properties;
-				var popup = "<h3>" + myMusicLocations[i].name + "</h3>";
+			myMusicLocations.describeMusicLocations();
+			for (var i = 0; i < myMusicLocations.features.length; i++) {
+				var props = myMusicLocations.features[i].properties;
+				var popup = "<h3>" + myMusicLocations.features[i].name + "</h3>";
 				for (var key in props) {
 					if (props[key] == props.imageURL) {
 						popup += '<img src=\"' + props.imageURL + '\" class="Pop-Up-Image">';
@@ -219,10 +220,11 @@
 
 	// --- Add Permanent Marker Locations ---
 	// For loop creating markers and tooltips
-	for (var i = 0; i < myLocations.length; i++) {
-		var props = myLocations[i].properties;
+	myLocations.describePermenantLocations();
+	for (var i = 0; i < myLocations.features.length; i++) {
+		var props = myLocations.features[i].properties;
 		// Create tooltip string message
-		var popup = "<h3>" + myLocations[i].name + "</h3>";
+		var popup = "<h3>" + myLocations.features[i].name + "</h3>";
 		for (var key in props) {
 			if (props[key] == props.exhibits) {
 				popup += "<p>" + "Number of exhibits: " + props.exhibits + "</p>";
