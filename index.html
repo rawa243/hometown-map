@@ -193,6 +193,7 @@
 
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 	<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet-src.js"></script>
+	<script src="data/route.js"></script>
 	<script>
 
 	// create a Leaflet map in our division container with id of 'map's
@@ -212,7 +213,60 @@
 		$('#image-container').slideToggle();
 	});
 
-  // --- Add Button for Special Music Location ----
+	// Add in special route
+	var myRoute = L.geoJson(routeData, {
+
+			filter : function(feature) {
+					if(feature.geometry.type == "LineString") {
+							return feature;
+					}
+			},
+			style : function(feature) {
+
+					return {
+							color: "#005DAA",
+							weight: 3,
+							opacity: .6,
+							dashArray: "10, 5"
+					}
+			},
+			onEachFeature : function(feature, layer) {
+					// set an event listener on each layer
+			    layer.on('mouseover', function(feature) {
+			        feature.target.setStyle({
+			            color: 'yellow',
+			            fillColor: 'yellow'
+			        });
+			    });
+
+			    layer.on('mouseout', function(feature) {
+			        feature.target.setStyle({
+			            color: '#005DAA',
+			            fillColor: '#005DAA'
+			        });
+			    });
+			}
+
+	}).addTo(map);
+
+	var myStops = L.geoJson(routeData, {
+
+			filter : function(feature) {
+					if(feature.geometry.type == "Point") {
+							return feature;
+					}
+			},
+			onEachFeature : function(feature, layer) {
+	        layer.bindTooltip(feature.properties.name);
+					layer.on('click', function(feature) {
+		    			map.setView(feature.latlng, 16);
+					});
+
+	    }
+
+	}).addTo(map);
+
+	// --- Add Button for Special Music Location ----
 	var button = document.getElementById("map-music"); //add button
 	var locationIndicator = false;
 
@@ -317,7 +371,7 @@
 	// Function returns a properly formatted Leaf icon object to place on your map
 	return result;
 
-};
+ };
 
 	</script>
 
