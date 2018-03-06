@@ -316,20 +316,21 @@
 			var props = myLocations.features[i].properties;
 			// Create tooltip string message
 			var popup = "<h3>" + myLocations.features[i].name + "</h3>";
-			for (var key in props) {
-				if (props[key] == props.exhibits) {
-					popup += "<p>" + "Number of exhibits: " + props.exhibits + "</p>";
-					if (props.museum) {
-						popup += "<p>" + "Is a museum." + "</p>";
-					}
-				} else if (props[key] == props.established) {
-					popup += "<p>" + "Year established: " + props.established + "</p>";
-					if (props.craft) {
-						popup += "<p>" + "Is a craft brewery." + "</p>";
-					}
-				} else if (props[key] == props.imageURL) {
-					popup += '<img src=\"' + props.imageURL + '\" class="Pop-Up-Image">';
+			
+			if (props.exhibits) {
+				popup += "<p>" + "Number of exhibits: " + props.exhibits + "</p>";
+				if (props.museum) {
+					popup += "<p>" + "Is a museum." + "</p>";
 				}
+			} else if (props.established) {
+				popup += "<p>" + "Year established: " + props.established + "</p>";
+				if (props.craft) {
+					popup += "<p>" + "Is a craft brewery." + "</p>";
+				}
+			}
+			
+			if (props.imageURL) {
+				popup += '<img src=\"' + props.imageURL + '\" class="Pop-Up-Image">';
 			}
 
 			var iconLocation = createIcon(props.icon); // Function call
