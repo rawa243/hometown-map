@@ -11,10 +11,6 @@
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
 
-	<!--- Add data as a separate file --->
-	<script src='permenantLocations.js'></script>
-	<script src='musicLocations.js'></script>
-
 	<style>
 		body {
 			margin: 0;
@@ -85,9 +81,9 @@
 		}
 
 		.two-column {
-		  float: left;
-		  width: 49%;
-		  margin-right: 1%;
+			float: left;
+			width: 49%;
+			margin-right: 1%;
 			margin-bottom: 18px;
 		}
 
@@ -105,7 +101,6 @@
 
 		#image-container {
 			display: none;
-			/* don't display container on page load */
 		}
 
 		.GR-Skyline {
@@ -116,24 +111,24 @@
 			width: 100%
 		}
 
-    .icon:hover {
-      opacity: .8;
-    }
+		.icon:hover {
+			opacity: .8;
+		}
 
-    .leaflet-popup-content h3 {
-      font-family: "Lora", serif;
-      font-size: 1.3em;
-      margin-bottom: 6px;
-    }
+		.leaflet-popup-content h3 {
+			font-family: "Lora", serif;
+			font-size: 1.3em;
+			margin-bottom: 6px;
+		}
 
-    .leaflet-popup-content p {
-      margin: 3px 0 6px;
-      font-size: 1.1em;
-    }
+		.leaflet-popup-content p {
+			margin: 3px 0 6px;
+			font-size: 1.1em;
+		}
 
-    .leaflet-popup-content a {
-      font-weight: normal;
-    }
+		.leaflet-popup-content a {
+			font-weight: normal;
+		}
 
 		footer {
 			background: #3d3d3d;
@@ -153,226 +148,212 @@
 			font-size: 1.2em;
 			/*            margin: 10px auto;*/
 		}
-
 	</style>
 </head>
 
 <body>
-			<header>
-							<section>
-											<h1>Hometown Map - Grand Rapids, MI</h1>
-							</section>
-			</header>
+	<header>
+		<section>
+			<h1>Hometown Map - Grand Rapids, MI</h1>
+		</section>
+	</header>
 	<section>
-					<div id='map'></div>
-					<button id='map-music'>Favorite Musical Locations</button>
-					<h2>About this map</h2>
-					<p class="two-column">Grand Rapids is home to
-						<a href="http://www.artprize.org">ArtPrize</a>, huge art festival that takes place each fall for 3 weeks. During this time artists come from around the
-						globe to install their art around the city and the public votes to see who has the best piece.</p>
-					<p class="two-column">Several world records have come out of ArtPrize including
-						<a href="http://www.guinnessworldrecords.com/world-records/79707-largest-bean-bag">largest bean bag</a> and
-						<a href="http://www.guinnessworldrecords.com/world-records/longest-painting-by-an-individual">longest painting</a> by an individual.
-						<button class="fr mt18" id="image-button">Image of Grand Rapids</button>
-					</p>
-					<div class="clear"> </div>
-					<div id='image-container'>
-					<img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Grdowntown.jpg" class="GR-Skyline">
-					</div>
+		<div id='map'></div>
+		<button id='map-music'>Favorite Musical Locations</button>
+		<h2>About this map</h2>
+		<p class="two-column">Grand Rapids is home to
+			<a href="http://www.artprize.org">ArtPrize</a>, huge art festival that takes place each fall for 3 weeks. During this time artists come from around the
+			globe to install their art around the city and the public votes to see who has the best piece.</p>
+		<p class="two-column">Several world records have come out of ArtPrize including
+			<a href="http://www.guinnessworldrecords.com/world-records/79707-largest-bean-bag">largest bean bag</a> and
+			<a href="http://www.guinnessworldrecords.com/world-records/longest-painting-by-an-individual">longest painting</a> by an individual.
+			<button class="fr mt18" id="image-button">Image of Grand Rapids</button>
+		</p>
+		<div class="clear"> </div>
+		<div id='image-container'>
+			<img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Grdowntown.jpg" class="GR-Skyline">
+		</div>
 	</section>
 	<footer>
-					<section>
-									<ul>
-											<li>See my projects on GitHub: <a href="https://github.com/rawa243">@rawa243</a></li>
-											<li>Follow me on: </li>
-											<li> &nbsp &nbsp LinkedIn: <a href="https://www.linkedin.com/in/rebwatkins/">@rebwatkins</a></li>
-											<li> &nbsp &nbsp Medium: <a href="https://medium.com/@rebekah_watkins/">@rebekah_watkins</a></li>
-									</ul>
-					</section>
+		<section>
+			<ul>
+				<li>See my projects on GitHub:
+					<a href="https://github.com/rawa243">@rawa243</a>
+				</li>
+				<li>Follow me on:
+					<ul>
+						<li>LinkedIn:
+							<a href="https://www.linkedin.com/in/rebwatkins/">@rebwatkins</a>
+						</li>
+						<li>Medium:
+							<a href="https://medium.com/@rebekah_watkins/">@rebekah_watkins</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</section>
 	</footer>
 
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	  crossorigin="anonymous"></script>
 	<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet-src.js"></script>
+	<!-- load data here -->
+	<script src='permenantLocations.js'></script>
+	<script src='musicLocations.js'></script>
 	<script src="data/route.js"></script>
 	<script>
+		// create a Leaflet map in our division container with id of 'map's
+		var map = L.map('map', {
+			center: [42.965357, -85.672074], // lat/lon values
+			zoom: 14
+		});
 
-	// create a Leaflet map in our division container with id of 'map's
-	var map = L.map('map', {
-		center: [42.965357, -85.672074], // lat/lon values
-		zoom: 14
-	});
+		// ---- Basemap! ----
+		var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+			maxZoom: 19,
+			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>'
+		}).addTo(map);
 
-	// ---- Basemap! ----
-	var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-		maxZoom: 19,
-		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>'
-	}).addTo(map);
+		// use JQuery to select the image-button and toggle slide the image
+		$('#image-button').click(function () {
+			$('#image-container').slideToggle();
+		});
 
-	// use JQuery to select the image-button and toggle slide the image
-	$('#image-button').click(function() {
-		$('#image-container').slideToggle();
-	});
+		// Add in special route
+		var myRoute = L.geoJson(routeData, {
 
-	// Add in special route
-	var myRoute = L.geoJson(routeData, {
-
-			filter : function(feature) {
-					if(feature.geometry.type == "LineString") {
-							return feature;
-					}
+			filter: function (feature) {
+				if (feature.geometry.type == "LineString") {
+					return feature;
+				}
 			},
-			style : function(feature) {
+			style: function (feature) {
 
-					return {
-							color: "#005DAA",
-							weight: 3,
-							opacity: .6,
-							dashArray: "10, 5"
-					}
+				return {
+					color: "#005DAA",
+					weight: 3,
+					opacity: .6,
+					dashArray: "10, 5"
+				}
 			},
-			onEachFeature : function(feature, layer) {
-					// set an event listener on each layer
-			    layer.on('mouseover', function(feature) {
-			        feature.target.setStyle({
-			            color: 'yellow',
-			            fillColor: 'yellow'
-			        });
-			    });
-
-			    layer.on('mouseout', function(feature) {
-			        feature.target.setStyle({
-			            color: '#005DAA',
-			            fillColor: '#005DAA'
-			        });
-			    });
-			}
-
-	}).addTo(map);
-
-	var myStops = L.geoJson(routeData, {
-
-			filter : function(feature) {
-					if(feature.geometry.type == "Point") {
-							return feature;
-					}
-			},
-			onEachFeature : function(feature, layer) {
-	        layer.bindTooltip(feature.properties.name);
-					layer.on('click', function(feature) {
-		    			map.setView(feature.latlng, 16);
+			onEachFeature: function (feature, layer) {
+				// set an event listener on each layer
+				layer.on('mouseover', function (feature) {
+					feature.target.setStyle({
+						color: 'yellow',
+						fillColor: 'yellow'
 					});
+				});
 
-	    }
-
-	}).addTo(map);
-
-	// --- Add Button for Special Music Location ----
-	var button = document.getElementById("map-music"); //add button
-	var locationIndicator = false;
-
-	button.addEventListener("click", function() {  //add event listener for click
-		if (!locationIndicator) {
-			markers = []
-			locationIndicator = true;
-			myMusicLocations.describeMusicLocations();
-			for (var i = 0; i < myMusicLocations.features.length; i++) {
-				var props = myMusicLocations.features[i].properties;
-				var popup = "<h3>" + myMusicLocations.features[i].name + "</h3>";
-				for (var key in props) {
-					if (props[key] == props.imageURL) {
-						popup += '<img src=\"' + props.imageURL + '\" class="Pop-Up-Image">';
-					}
-				}
-
-					var iconMusic = createIcon(props.type,props.icon); // Function call
-
-				// create marker
-				marker = new L.marker(props.coordinates, {
-					icon: iconMusic // Insert returned function value
-				})
-				  markers.push(marker)
-				  marker.addTo(map).bindTooltip(popup);
+				layer.on('mouseout', function (feature) {
+					feature.target.setStyle({
+						color: '#005DAA',
+						fillColor: '#005DAA'
+					});
+				});
 			}
-		} else {
-			locationIndicator = false;
-			markers.forEach(function(marker) {
-				map.removeLayer(marker)
-			})
-		}
-	});
 
-	// --- Add Permanent Marker Locations ---
-	// For loop creating markers and tooltips
-	myLocations.describePermenantLocations();
-	for (var i = 0; i < myLocations.features.length; i++) {
-		var props = myLocations.features[i].properties;
-		// Create tooltip string message
-		var popup = "<h3>" + myLocations.features[i].name + "</h3>";
-		for (var key in props) {
-			if (props[key] == props.exhibits) {
-				popup += "<p>" + "Number of exhibits: " + props.exhibits + "</p>";
-				if (props.museum) {
-					popup += "<p>" + "Is a museum." + "</p>";
+		}).addTo(map);
+
+		var myStops = L.geoJson(routeData, {
+
+			filter: function (feature) {
+				if (feature.geometry.type == "Point") {
+					return feature;
 				}
-			} else if (props[key] == props.established) {
-				popup += "<p>" + "Year established: " + props.established + "</p>";
-				if (props.craft) {
-					popup += "<p>" + "Is a craft brewery." + "</p>";
-				}
-			} else if (props[key] == props.imageURL) {
+			},
+			onEachFeature: function (feature, layer) {
+				layer.bindTooltip(feature.properties.name);
+				layer.on('click', function (feature) {
+					map.setView(feature.latlng, 16);
+				});
+
+			}
+
+		}).addTo(map);
+
+		// markers an empty Leaflet Layer Group
+		var markers = L.layerGroup();
+
+		for (var i = 0; i < myMusicLocations.features.length; i++) {
+			
+			var props = myMusicLocations.features[i].properties,
+					popup = "<h3>" + myMusicLocations.features[i].name + "</h3>";
+			
+			if (props.imageURL) {
 				popup += '<img src=\"' + props.imageURL + '\" class="Pop-Up-Image">';
 			}
+
+			var iconMusic = createIcon(props.icon); // Function call
+
+			// create marker and bind popup
+			marker = new L.marker(props.coordinates, {
+				icon: iconMusic // Insert returned function value
+			}).bindTooltip(popup);
+
+			// add the marker to the Layer Group
+			marker.addTo(markers)
 		}
 
-		var iconLocation = createIcon(props.type,props.icon); // Function call
+		myMusicLocations.describeMusicLocations();
 
-		// create marker
-		L.marker(props.coordinates, {
-			icon: iconLocation // Insert returned function value
-		})
-			.addTo(map) // add it to the map
-			.bindTooltip(popup);  // bind the tooltip
-	}
+		// --- Add Button for Special Music Location ----
+		var button = document.getElementById("map-music"); //add button
+		var locationIndicator = false;
 
-	// Function to determine type of location and return appropriate Leaflet icon object
-	function createIcon(typeOfLocation, url) {
-		var iconURL = "", // declare the iconURL
-		iconSize = 30; // create default size
+		button.addEventListener("click", function () { //add event listener for click
+			if (!locationIndicator) {
+				locationIndicator = true;
+				markers.addTo(map)
+			} else {
+				locationIndicator = false;
+				map.removeLayer(markers)
+			}
+		});
 
-		if (typeOfLocation == "Zoo") {
-			iconURL = url;
-		} else if (typeOfLocation == "Museum") {
-			iconURL = url;
-			iconSize = 25;
-		} else if (typeOfLocation == "Stadium") {
-			iconURL = url;
-			iconSize = 25;
-		} else if (typeOfLocation == "Concert Hall") {
-			iconURL = url;
-			iconSize = 25;
-		} else if (typeOfLocation == "Theatre") {
-			iconURL = url;
-			iconSize = 25;
-		} else if (typeOfLocation == "College") {
-			iconURL = url;
-			iconSize = 25;
-		} else if (typeOfLocation == "Brewery") {
-			iconURL = url;
-			iconSize = 25;
+		// --- Add Permanent Marker Locations ---
+		// For loop creating markers and tooltips
+		myLocations.describePermenantLocations();
+
+		for (var i = 0; i < myLocations.features.length; i++) {
+			var props = myLocations.features[i].properties;
+			// Create tooltip string message
+			var popup = "<h3>" + myLocations.features[i].name + "</h3>";
+			
+			if (props.exhibits) {
+				popup += "<p>" + "Number of exhibits: " + props.exhibits + "</p>";
+			} else if (props.established) {
+				popup += "<p>" + "Year established: " + props.established + "</p>";
+			}
+			
+			if (props.imageURL) {
+				popup += '<img src=\"' + props.imageURL + '\" class="Pop-Up-Image">';
+			}
+
+			var iconLocation = createIcon(props.icon); // Function call
+
+			// create marker
+			L.marker(props.coordinates, {
+					icon: iconLocation // Insert returned function value
+				})
+				.addTo(map) // add it to the map
+				.bindTooltip(popup); // bind the tooltip
+		}
+
+		// Function to determine type of location and return appropriate Leaflet icon object
+		function createIcon(url) {
+
+			// Create a Leaflet icon object
+			var result = L.icon({
+				iconUrl: url,
+				iconSize: 30,
+				popupAnchor: [0, -15] // Center of your icon is [0,0]
+			});
+
+			// Function returns a properly formatted Leaf icon object to place on your map
+			return result;
+
 		};
-
-	// Create a Leaflet icon object
-	var result = L.icon({
-		iconUrl: iconURL,
-		iconSize: iconSize,
-		popupAnchor: [0, -15] // Center of your icon is [0,0]
-	});
-
-	// Function returns a properly formatted Leaf icon object to place on your map
-	return result;
-
- };
-
 	</script>
 
 </body>
