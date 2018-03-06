@@ -282,6 +282,7 @@
 				markers = []
 				locationIndicator = true;
 				myMusicLocations.describeMusicLocations();
+				
 				for (var i = 0; i < myMusicLocations.features.length; i++) {
 					var props = myMusicLocations.features[i].properties;
 					var popup = "<h3>" + myMusicLocations.features[i].name + "</h3>";
@@ -311,6 +312,7 @@
 		// --- Add Permanent Marker Locations ---
 		// For loop creating markers and tooltips
 		myLocations.describePermenantLocations();
+
 		for (var i = 0; i < myLocations.features.length; i++) {
 			var props = myLocations.features[i].properties;
 			// Create tooltip string message
@@ -331,7 +333,7 @@
 				}
 			}
 
-			var iconLocation = createIcon(props.type, props.icon); // Function call
+			var iconLocation = createIcon(props.icon); // Function call
 
 			// create marker
 			L.marker(props.coordinates, {
@@ -342,36 +344,12 @@
 		}
 
 		// Function to determine type of location and return appropriate Leaflet icon object
-		function createIcon(typeOfLocation, url) {
-			var iconURL = "", // declare the iconURL
-				iconSize = 30; // create default size
-
-			if (typeOfLocation == "Zoo") {
-				iconURL = url;
-			} else if (typeOfLocation == "Museum") {
-				iconURL = url;
-				iconSize = 25;
-			} else if (typeOfLocation == "Stadium") {
-				iconURL = url;
-				iconSize = 25;
-			} else if (typeOfLocation == "Concert Hall") {
-				iconURL = url;
-				iconSize = 25;
-			} else if (typeOfLocation == "Theatre") {
-				iconURL = url;
-				iconSize = 25;
-			} else if (typeOfLocation == "College") {
-				iconURL = url;
-				iconSize = 25;
-			} else if (typeOfLocation == "Brewery") {
-				iconURL = url;
-				iconSize = 25;
-			};
+		function createIcon(url) {
 
 			// Create a Leaflet icon object
 			var result = L.icon({
-				iconUrl: iconURL,
-				iconSize: iconSize,
+				iconUrl: url,
+				iconSize: 30,
 				popupAnchor: [0, -15] // Center of your icon is [0,0]
 			});
 
