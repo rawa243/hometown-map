@@ -285,10 +285,8 @@
 				for (var i = 0; i < myMusicLocations.features.length; i++) {
 					var props = myMusicLocations.features[i].properties;
 					var popup = "<h3>" + myMusicLocations.features[i].name + "</h3>";
-					for (var key in props) {
-						if (props[key] == props.imageURL) {
-							popup += '<img src=\"' + props.imageURL + '\" class="Pop-Up-Image">';
-						}
+					if (props.imageURL) {
+						popup += '<img src=\"' + props.imageURL + '\" class="Pop-Up-Image">';
 					}
 
 					var iconMusic = createIcon(props.icon); // Function call
