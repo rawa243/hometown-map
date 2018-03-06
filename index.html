@@ -272,37 +272,42 @@
 
 		}).addTo(map);
 
+		// markers an empty Leaflet Layer Group
+		var markers = L.layerGroup();
+
+		for (var i = 0; i < myMusicLocations.features.length; i++) {
+			
+			var props = myMusicLocations.features[i].properties,
+					popup = "<h3>" + myMusicLocations.features[i].name + "</h3>";
+			
+			if (props.imageURL) {
+				popup += '<img src=\"' + props.imageURL + '\" class="Pop-Up-Image">';
+			}
+
+			var iconMusic = createIcon(props.icon); // Function call
+
+			// create marker and bind popup
+			marker = new L.marker(props.coordinates, {
+				icon: iconMusic // Insert returned function value
+			}).bindTooltip(popup);
+
+			// add the marker to the Layer Group
+			marker.addTo(markers)
+		}
+
+		myMusicLocations.describeMusicLocations();
+
 		// --- Add Button for Special Music Location ----
 		var button = document.getElementById("map-music"); //add button
 		var locationIndicator = false;
 
 		button.addEventListener("click", function () { //add event listener for click
 			if (!locationIndicator) {
-				markers = []
 				locationIndicator = true;
-				myMusicLocations.describeMusicLocations();
-
-				for (var i = 0; i < myMusicLocations.features.length; i++) {
-					var props = myMusicLocations.features[i].properties;
-					var popup = "<h3>" + myMusicLocations.features[i].name + "</h3>";
-					if (props.imageURL) {
-						popup += '<img src=\"' + props.imageURL + '\" class="Pop-Up-Image">';
-					}
-
-					var iconMusic = createIcon(props.icon); // Function call
-
-					// create marker
-					marker = new L.marker(props.coordinates, {
-						icon: iconMusic // Insert returned function value
-					})
-					markers.push(marker)
-					marker.addTo(map).bindTooltip(popup);
-				}
+				markers.addTo(map)
 			} else {
 				locationIndicator = false;
-				markers.forEach(function (marker) {
-					map.removeLayer(marker)
-				})
+				map.removeLayer(markers)
 			}
 		});
 
