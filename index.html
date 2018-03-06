@@ -101,7 +101,6 @@
 
 		#image-container {
 			display: none;
-			/* don't display container on page load */
 		}
 
 		.GR-Skyline {
@@ -282,7 +281,7 @@
 				markers = []
 				locationIndicator = true;
 				myMusicLocations.describeMusicLocations();
-				
+
 				for (var i = 0; i < myMusicLocations.features.length; i++) {
 					var props = myMusicLocations.features[i].properties;
 					var popup = "<h3>" + myMusicLocations.features[i].name + "</h3>";
@@ -292,7 +291,7 @@
 						}
 					}
 
-					var iconMusic = createIcon(props.type, props.icon); // Function call
+					var iconMusic = createIcon(props.icon); // Function call
 
 					// create marker
 					marker = new L.marker(props.coordinates, {
