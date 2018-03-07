@@ -208,6 +208,13 @@
 			zoom: 14
 		});
 
+		// restrict map to bounds
+		map.setMaxBounds(map.getBounds());
+		
+		// set min and max zoom level
+		map.setMinZoom(map.getZoom() - 2);
+		map.setMaxZoom(map.getZoom() + 1);
+
 		// ---- Basemap! ----
 		var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
 			maxZoom: 19,
